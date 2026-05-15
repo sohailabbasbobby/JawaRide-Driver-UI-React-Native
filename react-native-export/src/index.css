@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --color-brand: #10b981; /* emerald-500 */
+  --color-brand-hover: #059669;
+  --color-danger: #ef4444; /* red-500 */
+  --color-danger-hover: #dc2626;
+  --color-warning: #f59e0b; /* amber-500 */
+
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+@layer base {
+  :root {
+    --bg-color: #f4f4f5;
+    --card-bg: rgba(255, 255, 255, 0.85);
+    --card-border: rgba(0, 0, 0, 0.1);
+    --text-primary: #18181b;
+    --text-muted: #71717a;
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --shadow-main: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+    --overlay-dim: rgba(0, 0, 0, 0.2);
+  }
+
+  .dark {
+    --bg-color: #09090b;
+    --card-bg: rgba(24, 24, 27, 0.85);
+    --card-border: rgba(255, 255, 255, 0.1);
+    --text-primary: #fafafa;
+    --text-muted: #a1a1aa;
+    --glass-bg: rgba(24, 24, 27, 0.7);
+    --shadow-main: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5);
+    --overlay-dim: rgba(0, 0, 0, 0.7);
+  }
+
+  body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    overflow: hidden; /* Mobile app feel */
+    user-select: none;
+    -webkit-user-select: none;
+  }
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.glass-panel {
+  background: var(--card-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--card-border);
+  box-shadow: var(--shadow-main);
+}
+
+.slider-track-texture {
+  background-image: 
+    repeating-linear-gradient(
+      -45deg,
+      rgba(0, 0, 0, 0.05) 0px,
+      rgba(0, 0, 0, 0.05) 2px,
+      transparent 2px,
+      transparent 6px
+    ),
+    linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(255,255,255,0.5) 100%);
+  box-shadow: inset 0 3px 6px rgba(0,0,0,0.15), inset 0 -3px 6px rgba(255,255,255,0.7);
+}
+
+.dark .slider-track-texture {
+  background-image: 
+    repeating-linear-gradient(
+      -45deg,
+      rgba(255, 255, 255, 0.03) 0px,
+      rgba(255, 255, 255, 0.03) 2px,
+      transparent 2px,
+      transparent 6px
+    ),
+    linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(255,255,255,0.05) 100%);
+  box-shadow: inset 0 3px 6px rgba(0,0,0,0.5), inset 0 -3px 6px rgba(255,255,255,0.05);
+}
